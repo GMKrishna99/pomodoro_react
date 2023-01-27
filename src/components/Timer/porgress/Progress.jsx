@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { useState } from 'react';
-import Timer from '../Timer';
 import Clock from './Clock/Clock';
-
+import { StateContext } from '../../StateProvider';
+import { useContext , useEffect} from 'react';
 
 const Progress = () => {
 
-  const [progress, setProgress] = useState(55);
+  const {progress, setProgress,time,initTime} = useContext(StateContext);
 
-
+  useEffect(() => {
+    setProgress(time / (initTime / 100));
+  },[setProgress,time])
   return (
     <OuterBar progress={progress}>
         <InnerBar>

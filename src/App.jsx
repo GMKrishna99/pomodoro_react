@@ -1,14 +1,28 @@
 import styled from "styled-components";
 import Tags from "./components/Tags/Tags";
 import Timer from "./components/Timer/Timer";
+import Modal from "./components/Modal/Modal";
+import { useState } from "react";
+import { FaCog } from "react-icons/fa";
 
 function App() {
+
+    const [isOpen, setIsOpen] = useState(true);
+    const onClose = () => {
+        setIsOpen(false);
+    }
+    const onOpen = () => {
+        setIsOpen(true);
+    }
   return (
     <>
+      <Modal isOpen={isOpen} onClose={onClose} />
       <Title>Pomodoro</Title>
       <Tags />
       <Timer/>
-      {/* setting icons */}
+      <CogIcon onClick={onOpen}>
+        Set timer
+      </CogIcon>
     </>
   )
 }
@@ -21,4 +35,26 @@ const Title = styled.h1`
   font-size:4.5rem;
   padding: 2rem 0;
   text-align:center;
+`;
+const CogIcon = styled.div`
+  display:flex;
+  justify-content:center;
+  font-size:2rem;
+  width:150px;
+  margin:0 auto;
+  padding:0.5rem;
+  border-radius:5px;
+  text-transform:uppercase;
+  border:1px solid transparent;
+  background-color:${props => props.theme.colors.primary};
+  color:${props => props.theme.colors.bg};
+  cursor:pointer;
+  font-weight:600;
+  letter-spacing:0.2rem;
+  &:hover{
+    background-color:transparent;
+    color:${props => props.theme.colors.primary};
+    border:1px solid ${props => props.theme.colors.primary};
+    transition:all 0.2s ease-in-out;
+  }
 `;
