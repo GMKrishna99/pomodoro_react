@@ -17,10 +17,11 @@ function App() {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} />
-      <Title>Pomodoro</Title>
+      <Title>POMODORO</Title>
       <Tags />
       <Timer/>
       <CogIcon onClick={onOpen}>
+        <FaCog />
         Set timer
       </CogIcon>
     </>
@@ -32,15 +33,18 @@ export default App
 
 const Title = styled.h1`
   color:${props => props.theme.colors.secondary};
-  font-size:4.5rem;
+  font-size:5rem;
   padding: 2rem 0;
   text-align:center;
+  letter-spacing:1rem;
 `;
 const CogIcon = styled.div`
   display:flex;
   justify-content:center;
+  align-items:center;
+  gap:1rem;
   font-size:2rem;
-  width:150px;
+  width:170px;
   margin:0 auto;
   padding:0.5rem;
   border-radius:5px;
